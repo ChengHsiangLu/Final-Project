@@ -1,11 +1,11 @@
 # Final-Project
 ## Title
 
-Study the gene expression pattern of different age men with prostate cancer.
+**Study the gene expression pattern of different age men with prostate cancer**
 
 ## Author
 
-Cheng-Hsiang Lu
+**Cheng-Hsiang Lu**
 
 ## Overview of project
 
