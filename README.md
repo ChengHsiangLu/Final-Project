@@ -11,7 +11,7 @@ Cheng-Hsiang Lu
 I will study differentially expressed genes between two groups. One group of people is younger than 65 years old, while the other group is older than 65 years old. This analysis will utilize the package DESeq2 and follow the specific vignette: 
 [link](http://bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html)
 
-For this analysis, I will use the TCGA cohort and have identidfied 331 RNA-seq counts files for tumors that fit within my cohort.Saperated by the age of 65 years old,128 samples are from the group beyond 65 years old and 203 samples are from the group under 65 years old.
+For this analysis, I will use the TCGA cohort and have identidfied 331 RNA-seq counts files for tumors that fit within my cohort.Saperated by the age of 65 years old,128 samples are from the group beyond 65 years old and 203 samples are from the group under 65 years old. Within the analysis, I will control for race and gleason grade.
 
 ## Data
 I will use the data from [GDC](https://portal.gdc.cancer.gov/) Examining clinical data, there are total 331 cases from 55 to 75 years old, and each group has 128 and 203 samples .
