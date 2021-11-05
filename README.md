@@ -13,7 +13,7 @@ I will study differentially expressed genes between two groups. One group of peo
 
 For this analysis, I will use the TCGA cohort and have identidfied 331 RNA-seq counts files for tumors that fit within my cohort.Saperated by the age of 65 years old,128 samples are from the group beyond 65 years old and 203 samples are from the group under 65 years old.
 
-##Data
+## Data
 I will use the data from [GDC](https://portal.gdc.cancer.gov/) Examining clinical data, there are total 331 cases from 55 to 75 years old, and each group has 128 and 203 samples .
 
 ## Milestone 1
