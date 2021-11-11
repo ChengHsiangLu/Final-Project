@@ -2,7 +2,7 @@
 
 1.After adding all files to Cart in GDC, I have downloaded TCGA data from [GDC](https://portal.gdc.cancer.gov/) by clicking manifest.
 
- ![](images/Manifest.png?raw=true)
+ ![](Images/Manifest.png?raw=true)
 
 2. You need to download "gdc-client" form google and put it in your work directory and copy your work directory path into the ".zshrc" file.
 
@@ -14,7 +14,9 @@
 
 6. merge all files by following the script.
 
-7. download the other form of your data in GDC by clicking Metadata.
+7. download the other form of your data in GDC Cart by clicking Metadata.
+
+ ![](Images/Metadata.png?raw=true)
 
 8. follow the script i presented.
 
