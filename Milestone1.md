@@ -16,6 +16,8 @@
 
 7. download the other form of your data in GDC by clicking Metadata.
 
+ ![](Images/Metadata.png?raw=true)
+
 8. follow the script i presented.
 
 upload any/all scripts. Within a subdirectory called scripts
