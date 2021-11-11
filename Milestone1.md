@@ -2,7 +2,7 @@
 
 1.After adding all files to Cart in GDC, I have downloaded TCGA data from [GDC](https://portal.gdc.cancer.gov/) by clicking manifest.
 
- ![](images/Manifest.png?raw=true)
+ ![](Images/Manifest.png?raw=true)
 
 2. You need to download "gdc-client" form google and put it in your work directory and copy your work directory path into the ".zshrc" file.
 
