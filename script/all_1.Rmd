@@ -1,0 +1,115 @@
+#use R to put all downloaded files in one folder.
+```{r}
+setwd("~/Desktop/GDC/all_1/")
+dir.create('x')#create a new folder called "x".
+
+i<-list.dirs()#count the number of all files under this path.
+
+
+
+m=i[2:(length(i)-1)]
+
+for(n in m){
+
+x.path=paste(n,list.files(n),sep='/')
+
+file.copy(x.path,'./x',recursive = T)}
+
+```
+#gunzip all files and merge them.
+```{r}
+setwd("~/Desktop/GDC/all_1/x")#change directory to the "x" file.
+x_merge=NULL
+i<-list.files()
+
+for(n in i){
+  
+  x=read.delim(n,col.names = c('ID',substr(n,1,9)))
+  
+  if(is.null(x_merge)){
+    x_merge=x
+  }
+  else{
+    x_merge=merge(x_merge,x,by='ID')
+  }
+}
+
+rownames(x_merge)<-x_merge$ID
+
+x_reduce=x_merge[-(1:5),]#delete first 5 rows which I don't need
+
+x_reduce=x_reduce[,-1]#delete first column names
+```
+# read matadata.josn to determine whether samples are normal or cancer.
+```{r}
+setwd("~/Desktop/GDC/all_1/x")
+library(rjson)
+
+x=fromJSON(file='metadata.cart.2021-11-10.json')
+
+n=ncol(x_reduce)
+
+id=rep(0,n)
+
+sample_id=rep(0,n)
+
+for(i in 1:n){
+
+id[i]=x[[i]]$submitter_id
+
+sample_id[i]=x[[i]]$associated_entities[[1]]$entity_submitter_id
+
+}
+
+sample_matrix=data.frame(id=id,sample_id=sample_id)
+
+sample_info=data.frame(id=substr(id,1,9),sample_id=substr(sample_id,1,15))
+
+sample_info=sample_info[order(sample_info$id),]
+
+colnames(x_reduce)=sample_info$sample_id
+
+xb=rownames(x_reduce)
+
+xc<-gsub("\\.(\\.?\\d*)","",xb)
+
+rownames(x_reduce)=xc
+
+```
+# save the sample_young.csv 
+```{r}
+write.csv(x_reduce,file="Sample_young.csv")
+```
+
+# grouping the data according to the metadata.json
+```{r}
+group_name=colnames(x_reduce)
+
+group_name=substr(group_name,14,15)
+
+group=ifelse(as.numeric(group_name)<10,1,0)
+
+group=factor(group,levels = c(0,1),labels = c('normal','cancer'))
+
+```
+# use DESeq2 to analyse the data above.
+```{r}
+library(DESeq2)
+
+x_d<-x_reduce[rowSums(x_reduce>20)>ncol(x_reduce)/2,]
+
+cData<-data.frame(group=group)
+
+colnames(x_d)<-rownames(cData)
+
+d.des<-DESeqDataSetFromMatrix(x_d,colData = cData,design = ~group)
+
+res<-DESeq(d.des)
+
+result<-results(res)
+
+```
+```{r}
+result
+```
+

@@ -1,13 +1,14 @@
 ## Update
 
-1. I have downloaded TCGA data from [GDC](https://portal.gdc.cancer.gov/) by clicking manifest.
+1.After adding all files to Cart in GDC, I have downloaded TCGA data from [GDC](https://portal.gdc.cancer.gov/) by clicking manifest.
+ ![](images/Manifest.png?raw=true)
 2. You need to download "gdc-client" form google and put it in your work directory and copy your work directory path into the ".zshrc" file.
 3. Then, after reopening the terminal, please use the command ```nohup gdc-client download -m ~/path_to_your_file/manifest.txt &```
-4. In R, I will put all files in new directory called "x".
+4. I will put all files in new directory called "x".
 5. unzip all files in by using the command ```gunzip *htseq.counts```
 6. merge all files by following the script.
-7.download the other form of your data in GDC by clicking Metadata.
-8.follow the script i presented.
+7. download the other form of your data in GDC by clicking Metadata.
+8. follow the script i presented.
 
 upload any/all scripts. Within a subdirectory called scripts
 
