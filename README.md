@@ -18,7 +18,7 @@ I will use the data from [GDC](https://portal.gdc.cancer.gov/) Examining clinica
 
 ## Milestone 1
 
-I will download total 331 cases to build up my first dataset. Then, the dataset will be arranged for further analyzing. I'll analysis the gene expression pattern by making a plot like Heatmap plot or PCA plot. 
+I will download total 331 cases to build up my first dataset. Then, the dataset will be arranged for further analyzing. 
 
 ## Milestone 2
 
