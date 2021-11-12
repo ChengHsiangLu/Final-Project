@@ -26,7 +26,7 @@ I will run throught the SOP I presented above and try to ruduce errors within my
  
 ##  Data
  
-I have uploaded" Sample_young.csv".
+I have uploaded" Sample_young.csv" and "result.txt".
 
  Please put your data in a shared GoogleDrive folder as a tar/zip file called finalproject.tar.gz which upon untaring with tar -xvzf finalproject.tar.gz will create a folder called data that contains all your data in a way that your script can operate off of.  This section will create a link that shared dataset.
  
