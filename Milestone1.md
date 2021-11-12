@@ -20,24 +20,13 @@
 
 8. follow the script i presented.
 
-upload any/all scripts. Within a subdirectory called scripts
-
-upload Excel, however all filtering of files must be done in R by the end.
-
-Please use relative paths (~/myproject), not absolute paths (/home/davidcraig/myproject). 
-
-please take a picture of your status, and make it visible within the Gitub in line. 
- simply append ?raw=true to the image url will make the trick:
- ![](images/mypciture.png?raw=true)
- If you are doing R, this picture would show where you are in vignette
- 
  ## Next Steps
 
- What steps are you going to do for milestone 2. may be just a repeat of previously.
+ I will run throught the SOP I presented above and try to download samples with 65-75 years old. Then, I will try to conbine two groups into one form.
  
 ##  Data
  
- Not due by Milestone 1, but I will address.
+ I have uploaded" Sample_young.csv" into my GitHub
  Please put your data in a shared GoogleDrive folder as a tar/zip file called finalproject.tar.gz which upon untaring with tar -xvzf finalproject.tar.gz will create a folder called data that contains all your data in a way that your script can operate off of.  This section will create a link that shared dataset.
  
 ##  Known Issues. 
