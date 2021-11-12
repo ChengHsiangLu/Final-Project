@@ -1,0 +1,61 @@
+
+```{r}
+directory <- "/Users/samuellu/Desktop/GDC/all"
+```
+
+
+```{r}
+#directory <- system.file("extdata", package="pasilla",
+#                         mustWork=TRUE)
+```
+
+```{r}
+sampleFiles <- grep("htseq.counts",list.files(directory),value=TRUE)
+sampleCondition <- sub("(.*treated).*","\\1",sampleFiles)
+sampleTable <- data.frame(sampleName = sampleFiles,
+                          fileName = sampleFiles,
+                          condition = sampleCondition)
+sampleTable$condition <- factor(sampleTable$condition)
+```
+
+```{r}
+#sampleFiles <- grep("treated",list.files(directory),value=TRUE)
+#sampleCondition <- sub("(.*treated).*","\\1",sampleFiles)
+#sampleTable <- data.frame(sampleName = sampleFiles,
+#                          fileName = sampleFiles,
+#                          condition = sampleCondition)
+#sampleTable$condition <- factor(sampleTable$condition)
+
+```
+
+```{r}
+condition <- c('young_1','young_2','young_3','young_4','young_5','young_6','young_7','young_8','young_9','young_10','old_1','old_2','old_3','old_4','old_5','old_6','old_7','old_8','old_9','old_10')
+```
+
+```{r}
+library("DESeq2")
+dds <- DESeqDataSetFromHTSeqCount(sampleTable = sampleTable,
+                                       directory = directory,
+                                       design= ~ condition)
+dds
+```
+```{r}
+dds <- DESeq(dds)
+resultsNames(dds) # lists the coefficients
+res <- results(dds, name="condition_trt_vs_untrt")
+# or to shrink log fold changes association with condition:
+res <- lfcShrink(dds, coef="condition_trt_vs_untrt", type="apeglm")
+
+```
+
+```{r}
+keep <- rowSums(counts(dds)) >= 10
+dds <- dds[keep,]
+```
+```{r}
+dds$condition <- factor(dds$condition, levels = c("untreated","treated"))
+```
+
+
+
+
