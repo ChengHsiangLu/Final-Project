@@ -8,36 +8,21 @@
 
 3. Then, after reopening the terminal, please use the command ```nohup gdc-client download -m ~/path_to_your_file/manifest.txt &```
 
-4. I will put all files in new directory called "x".
+4. I will put all files in new directory.
 
 5. unzip all files in by using the command ```gunzip *htseq.counts```
 
-6. merge all files by following the script.
-
-7. download the other form of your data in GDC by clicking Metadata.
-
- ![](Images/Metadata.png?raw=true)
+6. use part of the samples for testing.
 
 8. follow the script i presented.
-
-upload any/all scripts. Within a subdirectory called scripts
-
-upload Excel, however all filtering of files must be done in R by the end.
-
-Please use relative paths (~/myproject), not absolute paths (/home/davidcraig/myproject). 
-
-please take a picture of your status, and make it visible within the Gitub in line. 
- simply append ?raw=true to the image url will make the trick:
- ![](images/mypciture.png?raw=true)
- If you are doing R, this picture would show where you are in vignette
  
  ## Next Steps
 
- What steps are you going to do for milestone 2. may be just a repeat of previously.
+I will run throught the SOP I presented above and try to ruduce errors within my contexts. Maybe run more data to test my script.
  
 ##  Data
  
- Not due by Milestone 1, but I will address.
+I have uploaded" Sample_young.csv".
  Please put your data in a shared GoogleDrive folder as a tar/zip file called finalproject.tar.gz which upon untaring with tar -xvzf finalproject.tar.gz will create a folder called data that contains all your data in a way that your script can operate off of.  This section will create a link that shared dataset.
  
 ##  Known Issues. 
