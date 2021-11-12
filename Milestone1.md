@@ -14,7 +14,7 @@
 
 5. unzip all files in by using the command:
 
-   ```gunzip *htseq.counts```
+   ```gunzip *htseq.counts.gz```
 
 6. use part of the samples for testing.
 
