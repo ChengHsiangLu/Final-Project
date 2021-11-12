@@ -7,12 +7,14 @@
 2. You need to download "gdc-client" form google and put it in your work directory and copy your work directory path into the ".zshrc" file.
 
 3. Then, after reopening the terminal, please use the command:
- ```nohup gdc-client download -m ~/path_to_your_file/manifest.txt &```
+
+   ```nohup gdc-client download -m ~/path_to_your_file/manifest.txt &```
 
 4. I will put all files in new directory.
 
 5. unzip all files in by using the command:
- ```gunzip *htseq.counts```
+
+   ```gunzip *htseq.counts```
 
 6. use part of the samples for testing.
 
