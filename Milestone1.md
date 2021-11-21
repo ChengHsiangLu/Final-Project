@@ -14,8 +14,6 @@ Experimental Strategy - "**RNA-Seq**".
 
 Workflow Type - "**HTSeq - Counts**".
 
-   ```gunzip *htseq.counts.gz```
-
 Access - "**open**".
 
 ![](Images/Files.png?raw=true)
