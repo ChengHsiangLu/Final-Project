@@ -16,6 +16,8 @@ Experimental Strategy - "**RNA-Seq**".
 
 Workflow Type - "**HTSeq - Counts**".
 
+   ```gunzip *htseq.counts.gz```
+
 Access - "**open**".
 
 On the left side "**Cases**" filters:
