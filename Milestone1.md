@@ -1,8 +1,6 @@
 ## Update 
+
 ### Data filtering
-
--
-
 
 First, go to [GDC](https://portal.gdc.cancer.gov/) and click on "**Repository**".
 
@@ -16,9 +14,9 @@ Experimental Strategy - "**RNA-Seq**".
 
 Workflow Type - "**HTSeq - Counts**".
 
-   ```gunzip *htseq.counts.gz```
-
 Access - "**open**".
+
+![](Images/Files.png?raw=true)
 
 On the left side "**Cases**" filters:
 
@@ -42,15 +40,17 @@ Vital Status - "**alive**".
 
 Race - "**white**" and "**black or african american**".
 
+![](Images/Cases.png?raw=true)
+
 In this group, I got 225 files but only 203 cases. 
 
 Later, open a new webpage of [GDC](https://portal.gdc.cancer.gov/). I will select another group with all the same filters except Age at Diagnosis (From "**65**" to "**75**"). I got 146 files but only 128 cases.
 
 ### Data downloading
 
--
-
 After selecting all files to Cart in GDC, I have downloaded TCGA data by clicking **Manifest**.
+
+![](Images/Manifest.png?raw=true)
 
 You have to download "gdc-client" form [GDC Data Transfer Tool](https://gdc.cancer.gov/access-data/gdc-data-transfer-tool) by choosing **gdc-client_v1.6.1_OSX_x64.zip** and put it in your work directory and copy your work directory path into the ".zshrc" file like this:
 
@@ -71,6 +71,8 @@ unzip all files in by using the command:
 The first group which age between 55-64, I will put them in a folder called "young" and change all their names with the prefix "younggroup".
 
 The second group which age between 65-75, I will put them in a folder called "old" and change all their names with the prefix "oldgroup".
+
+![](Images/all_files.png?raw=true)
 
 Then, merge all files into a new folder called "all".
 
