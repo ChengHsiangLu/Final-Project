@@ -6,7 +6,7 @@ I modified my Milestone_1 with more details about how to download the data step 
 
 ### Input all samples
 
-After testing with more files, now I will start putting all my samples in my "all" folder and going through the script that I previously made.
+After testing with more files, now I will start putting all my samples in my "HTseq_counts_files" folder and going through the script that I previously made.
 
 ## Differential expression analysis
 
