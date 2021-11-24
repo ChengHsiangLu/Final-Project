@@ -1,0 +1,306 @@
+#htseq-count input
+```{r}
+directory <- "/Users/samuellu/Desktop/GDC/all"
+```
+
+```{r}
+sampleFiles <- grep("group",list.files(directory),value=TRUE)
+sampleCondition <- sub("(.*group).*","\\1",sampleFiles)
+sampleTable <- data.frame(sampleName = sampleFiles,
+                          fileName = sampleFiles,
+                          condition = sampleCondition)
+sampleTable$condition <- factor(sampleTable$condition)
+```
+
+It may take a while.
+```{r}
+library("DESeq2")
+dds <- DESeqDataSetFromHTSeqCount(sampleTable = sampleTable,
+                                       directory = directory,
+                                       design= ~ condition)
+#dds
+```
+#Pre-filtering
+remove rows in which there are reads less than 10.
+```{r}
+keep <- rowSums(counts(dds)) >= 10
+dds <- dds[keep,]
+```
+#Note on factor levels
+tell results which comparison to make.
+```{r}
+dds$condition <- factor(dds$condition, levels = c("younggroup","oldgroup"))
+#dds$condition
+```
+#Differential expression analysis
+It may take a while.
+```{r}
+dds <- DESeq(dds)
+res <- results(dds)
+```
+specify the contrast I want to build a results table.
+```{r}
+res <- results(dds, contrast=c("condition","younggroup","oldgroup"))
+```
+#Log fold change shrinkage for visualization and ranking
+```{r}
+resultsNames(dds)
+```
+
+```{r}
+library(apeglm)
+resLFC <- lfcShrink(dds, coef="condition_oldgroup_vs_younggroup", type="apeglm")
+resLFC
+```
+#Speed-up and parallelization thoughts
+```{r}
+library("BiocParallel")
+register(MulticoreParam(4))
+```
+#p-values and adjusted p-values
+```{r}
+resOrdered <- res[order(res$pvalue),]
+```
+
+summarize some basic tallies using the summary function.
+```{r}
+summary(res)
+```
+to check how many adjusted p-values were less than 0.1.
+```{r}
+sum(res$padj < 0.1, na.rm=TRUE)
+```
+set the adjusted p value cutoff to 0.05.
+```{r}
+res05 <- results(dds, alpha=0.05)
+summary(res05)
+```
+
+```{r}
+sum(res05$padj < 0.05, na.rm=TRUE)
+```
+#Independent hypothesis weighting
+implement the method of Independent Hypothesis Weighting.
+```{r}
+library("IHW")
+resIHW <- results(dds, filterFun=ihw, contrast=c("condition","younggroup","oldgroup"), alpha=0.05)
+summary(resIHW)
+
+```
+#remove ensembl_id "." part.
+```{r}
+ens_id<- substr(row.names(resIHW),1 ,15)
+rownames(resIHW) <- ens_id
+```
+
+```{r}
+rawcount<- resIHW
+Ensembl_ID <- data.frame(Ensembl_ID = row.names(rawcount))
+#Ensembl_ID
+rownames(Ensembl_ID) <- Ensembl_ID[,1]
+rawcount <-cbind(Ensembl_ID, rawcount)
+#rawcount
+```
+change gene_id to gene name.
+```{r}
+get_map = function(input) {
+  if (is.character(input)) {
+    if(!file.exists(input)) stop("Bad input file.")
+    message("Treat input as file")
+    input = data.table::fread(input, header = FALSE)
+  } else{
+    data.table::setDT(input)
+  }
+  input = input[input[[3]] == "gene", ]
+  
+  pattern_id = ".*gene_id \"([^;]+)\";.*"
+  pattern_name = ".*gene_name \"([^;]+)\";.*"
+  
+  gene_id = sub(pattern_id, "\\1", input[[9]])
+  gene_name = sub(pattern_name, "\\1", input[[9]])
+  
+  Ensembl_ID_TO_Genename <- data.frame(gene_id = gene_id,
+                                       gene_name = gene_name,
+                                       stringsAsFactors = FALSE)
+  return(Ensembl_ID_TO_Genename)
+}
+
+```
+
+```{r}
+Ensembl_ID_TO_Genename <- get_map("~/Desktop/GDC/gencode.v38lift37.annotation.gtf")
+```
+
+```{r}
+gtf_Ens_ID <- substr(Ensembl_ID_TO_Genename[,1],1,15)
+Ensembl_ID_TO_Genename <- data.frame(gtf_Ens_ID, Ensembl_ID_TO_Genename[,2])
+colnames(Ensembl_ID_TO_Genename) <- c("Ensembl_ID","gene_id")
+write.csv(Ensembl_ID_TO_Genename, file = "~/Desktop/GDC/Ensembl_ID_TO_Genename.csv")
+```
+merge data with gene_id.
+```{r}
+mergeRawCounts <- merge(Ensembl_ID_TO_Genename, rawcount ,by = "Ensembl_ID")
+```
+remove duplicate gene_id.
+```{r}
+index <- duplicated(mergeRawCounts$gene_id)
+mergeRawCounts <- mergeRawCounts[!index,]
+```
+use gene_id as rownames.
+```{r}
+rownames(mergeRawCounts) <- mergeRawCounts[,"gene_id"]
+res_new <- mergeRawCounts[,-c(1:2)]
+```
+
+```{r}
+res_new
+```
+save files.
+```{r}
+write.csv(as.data.frame(res_new), file = "~/Desktop/GDC/res_new.csv")
+```
+
+```{r}
+sum(res_new$padj < 0.05, na.rm=TRUE)
+```
+
+#Exploring and exporting results
+##MA-plot
+```{r}
+plotMA(res, ylim=c(-2,2))
+```
+remove the noise associated with log2 fold changes from low count genes without requiring arbitrary filtering thresholds.
+```{r}
+plotMA(resLFC, ylim=c(-2,2))
+```
+
+#Alternative shrinkage estimators
+```{r}
+resultsNames(dds)
+```
+# because we are interested in younggroup vs oldgroup, we set 'coef=2'
+It may take a while.
+```{r}
+resNorm  <- lfcShrink(dds, coef=2, type="normal")
+resAsh <- lfcShrink(dds, coef=2, type="ashr")
+```
+
+```{r}
+par(mfrow=c(1,3), mar=c(4,4,2,1))
+xlim <- c(1,1e5); ylim <- c(-3,3)
+plotMA(resLFC, xlim=xlim, ylim=ylim, main="apeglm")
+plotMA(resNorm, xlim=xlim, ylim=ylim, main="normal")
+plotMA(resAsh, xlim=xlim, ylim=ylim, main="ashr")
+```
+
+#Plot counts
+examine the counts of reads for a single gene across the groups.
+```{r}
+plotCounts(dds, gene=which.min(res$padj), intgroup="condition")
+```
+an argument returnData specifies that the function should only return a data.frame for plotting with ggplot.
+```{r}
+d <- plotCounts(dds, gene=which.min(res$padj), intgroup="condition", 
+                returnData=TRUE)
+library("ggplot2")
+ggplot(d, aes(x=condition, y=count)) + 
+  geom_point(position=position_jitter(w=0.1,h=0)) + 
+  scale_y_log10(breaks=c(25,100,400))
+```
+#More information on results columns
+```{r}
+mcols(res)$description
+```
+#Exporting results to CSV files
+A plain-text file of the results can be exported using the base R functions write.csv.
+```{r}
+#write.csv(as.data.frame(resOrdered), 
+#          file="condition_age_results.csv")
+```
+Exporting only the results which pass an adjusted p value threshold can be accomplished with the subset function, followed by the write.csv function.
+```{r}
+resSig_d <- subset(resOrdered, padj < 0.05)
+resSig_d[which(resSig_d$log2FoldChange > 0), "gen_reg"] <- "up"
+resSig_d[which(resSig_d$log2FoldChange < 0), "gen_reg"] <- "down"
+resSig_d
+```
+
+```{r}
+write.csv(as.data.frame(resSig_d), 
+          file="condition_age_results_resSig_d.csv")
+```
+
+#Data transformations and visualization
+##Count data transformations
+###Extracting transformed values
+```{r}
+vsd <- vst(dds, blind=FALSE)
+```
+# this gives log2(n + 1)
+```{r}
+ntd <- normTransform(dds)
+library("vsn")
+meanSdPlot(assay(ntd))
+```
+
+```{r}
+meanSdPlot(assay(vsd))
+```
+#Data quality assessment by sample clustering and visualization
+##Heatmap of the count matrix!
+```{r}
+#res_new
+```
+
+Below we show how to produce such a heatmap for various transformations of the data.
+I remove the "annotation_col=df" and "show_rownames=FALSE", then add "cluster_rows=FALSE" and "cluster_cols=FALSE" to make the plot clearer.
+```{r}
+library("pheatmap")
+select <- order(rowMeans(counts(dds,normalized=TRUE)),
+                decreasing=TRUE)[1:20]
+df <- as.data.frame(colData(dds)[,c("condition", "sizeFactor")])
+pheatmap(assay(ntd)[select,], cluster_rows=FALSE, show_rownames=FALSE,
+         cluster_cols=FALSE, annotation_col=df, show_colnames = FALSE)
+```
+
+```{r}
+pheatmap(assay(vsd)[select,], cluster_rows=FALSE, show_rownames=FALSE,
+         cluster_cols=FALSE, annotation_col=df, show_colnames = FALSE)
+```
+
+##Heatmap of the sample-to-sample distances
+get sample-to-sample distances.
+just wait for a while.
+```{r}
+sampleDists <- dist(t(assay(vsd)))
+```
+
+```{r}
+library("RColorBrewer")
+sampleDistMatrix <- as.matrix(sampleDists)
+rownames(sampleDistMatrix) <- paste(vsd$condition, vsd$type, sep="-")
+colnames(sampleDistMatrix) <- NULL
+colors <- colorRampPalette( rev(brewer.pal(9, "Blues")) )(255)
+pheatmap(sampleDistMatrix,
+         clustering_distance_rows=sampleDists,
+         clustering_distance_cols=sampleDists,
+         col=colors, show_rownames=FALSE)
+```
+
+##Principal component plot of the samples
+shows the samples in the 2D plane spanned by their first two principal components. 
+```{r}
+plotPCA(vsd, intgroup=c("condition"))
+```
+
+customize the PCA plot using the ggplot function.
+```{r}
+pcaData <- plotPCA(vsd, intgroup=c("condition"), returnData=TRUE)
+percentVar <- round(100 * attr(pcaData, "percentVar"))
+ggplot(pcaData, aes(PC1, PC2, color=condition, shape=condition)) +
+  geom_point(size=2) +
+  xlab(paste0("PC1: ",percentVar[1],"% variance")) +
+  ylab(paste0("PC2: ",percentVar[2],"% variance")) + 
+  coord_fixed()
+
+```
