@@ -11,10 +11,19 @@ After testing with more files, now I will start putting all my samples in my "al
 ## Differential expression analysis
 
 #### MA-plot
+![](Images/MAplot_res.png?raw=true)
+![](Images/MAplot_resLFC.png?raw=true)
+![](Images/MAplot_3.png?raw=true)
 #### Plot counts
+![](Images/plotCounts.png?raw=true)
+![](Images/plotCounts_2.png?raw=true)
 #### Heatmap
+![](Images/pheatmap.png?raw=true)
+![](Images/pheatmap_2.png?raw=true)
+![](Images/pheatmap_spl_to_spl.png?raw=true)
 #### Principal component plot
-
+![](Images/plotPCA.png?raw=true)
+![](Images/plotPCA_costomize.png?raw=true)
 ## Data
 
 All of my data will be uploaded to my GitHub acount.
