@@ -208,6 +208,14 @@ In this case I use coef=2.
 resNorm  <- lfcShrink(dds, coef=2, type="normal")
 resAsh <- lfcShrink(dds, coef=2, type="ashr")
 ```
+```
+par(mfrow=c(1,3), mar=c(4,4,2,1))
+xlim <- c(1,1e5); ylim <- c(-3,3)
+plotMA(resLFC, xlim=xlim, ylim=ylim, main="apeglm")
+plotMA(resNorm, xlim=xlim, ylim=ylim, main="normal")
+plotMA(resAsh, xlim=xlim, ylim=ylim, main="ashr")
+```
+
 ![](/Images/MAplot_3.png?raw=true)
 The options for ```type``` are:
 
