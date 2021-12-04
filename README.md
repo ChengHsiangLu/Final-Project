@@ -238,7 +238,7 @@ plotCounts(dds, "ENSG00000205853.9", intgroup="condition") #RFPL3S
 
 customized plotting.
 
-![](/Images/customized plotcounts.png?raw=true)
+![](/Images/customized_plotcounts.png?raw=true)
 
 **I do not see any difference between younggroup and oldgroup by plot counts right now.**
 ####More information on results columns
