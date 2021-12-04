@@ -150,7 +150,7 @@ library("BiocParallel")
 register(MulticoreParam(4))
 ```
 ## Differential expression analysis
-###The standard differential expression analysis steps are wrapped into a single function, DESeq.(It may take a while.)
+### The standard differential expression analysis steps are wrapped into a single function, DESeq.(It may take a while.)
 ```
 dds <- DESeq(dds)
 ```
