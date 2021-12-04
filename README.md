@@ -241,10 +241,10 @@ customized plotting.
 ![](/Images/customized_plotcounts.png?raw=true)
 
 **I do not see any difference between younggroup and oldgroup by plot counts right now.**
-####More information on results columns
+#### More information on results columns
 
 ```mcols(res)$description```
-##Data transformations and visualization
+## Data transformations and visualization
 ### Extracting transformed values
 ```
 vsd <- vst(dds, blind=FALSE)
