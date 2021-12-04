@@ -450,7 +450,7 @@ res_new <- mergeRawCounts[,-c(1:2)]
 ```
 write.csv(as.data.frame(res_new), file = "~/Desktop/GDC/res_new.csv")
 ```
-#### Create a upregulated genes list and a downregulated genes list.
+#### Create a upregulated genes list and a downregulated genes list with p-value < 0.05, log2FoldChange>=1 or log2FoldChange<=-1.
 ```
 summary(res_new)
 res_df <- as.data.frame(res_new)
