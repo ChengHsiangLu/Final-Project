@@ -258,6 +258,15 @@ plotCounts(dds, "ENSG00000205853.9", intgroup="condition")
 
 customized plotting.
 
+```
+d <- plotCounts(dds, "ENSG00000205853.9", intgroup="condition", 
+                returnData=TRUE)
+library("ggplot2")
+ggplot(d, aes(x=condition, y=count)) + 
+  geom_point(position=position_jitter(w=0.1,h=0)) + 
+  scale_y_log10(breaks=c(25,100,400))
+```
+
 ![](/Images/customized_plotcounts.png?raw=true)
 
 **I do not see any difference between younggroup and oldgroup by plot counts right now.**
