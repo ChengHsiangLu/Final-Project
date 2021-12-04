@@ -205,8 +205,14 @@ summary(resIHW)
 ### Exploring and exporting results
 #### MA-plot
 It is a normal plot if it looks symmetrical from the line in the middle.
+```
+plotMA(res, ylim=c(-2,2))
+```
 ![](/Images/MAplot_res.png?raw=true)
 With this plot, I remove the noise associated with log2 fold changes from low count genes without requiring arbitrary filtering thresholds.
+```
+plotMA(resLFC, ylim=c(-2,2))
+```
 ![](/Images/MAplot_resLFC.png?raw=true)
 #### Alternative shrinkage estimators
 In DESeq2 version 1.18, they include two additional adaptive shrinkage estimators, available via the type argument of lfcShrink. 
