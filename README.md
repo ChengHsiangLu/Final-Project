@@ -492,17 +492,19 @@ I cannot use ```rld <- rlog(dds, blind=FALSE)``` because my samples are too larg
 
 I try to put genes name into the ```plotCounts(dds, "ENSG00000004809.12", intgroup="condition") ``` code, however,it did not work.
 
-I should reduce my data into smaller dataset, so all my plot could look better and relatively easy to analysize.
-
 After changing ensembl\_id into gene\_names for my "up" and "down" files, I still don't know how to change dds dataset's names.
 
 Try to fix the problem of down file with zero set in the end.
 
 ## Conclusion
 
-I don't see a major difference between two groups. It is important that the group I choose should have a larger gap, like 30-40 years old to 60-70 years old or mild condition to sever condition.
+By using [GSEA](http://www.gsea-msigdb.org/gsea/msigdb/annotate.jsp) to analyze, I found that 127 upregulated genes are enriched in three categories.
 
-I should reduce my data to a smller size that is easier to manager.
+However, there is no significant difference of the gene expression pattern between two groups. 
+
+It would be interesting to see whether there is any difference by using a larger gap of age, like 30-40 years old compare to 60-70 years old.
+
+In the future, we should also include more samples or different datasets to confirm the results in this study.
 
 ## Files
 
