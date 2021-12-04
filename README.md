@@ -417,7 +417,7 @@ mergeRawCounts <- mergeRawCounts[!index,]
 rownames(mergeRawCounts) <- mergeRawCounts[,"gene_id"]
 res_new <- mergeRawCounts[,-c(1:2)]
 ```
-####save files.
+#### Save files.
 ```
 write.csv(as.data.frame(res_new), file = "~/Desktop/GDC/res_new.csv")
 ```
