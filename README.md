@@ -445,13 +445,15 @@ write.csv(as.data.frame(up), file = "~/Desktop/GDC/up.csv")
 down <- get_downregulated(res_df)
 write.csv(as.data.frame(down), file = "~/Desktop/GDC/down.csv")
 ```
-After getting up and down csv files, I save them as txt files. Then, I use the [GSEA](http://www.gsea-msigdb.org/gsea/msigdb/annotate.jsp) website and put all my up genes into it.
+127 genes are listed in "up.csv" and 74 genes are listed in "down.csv".
+
+After getting up and down csv files, I save them as txt files. Then, I use the [GSEA](http://www.gsea-msigdb.org/gsea/msigdb/annotate.jsp) website and put all my up list genes into it.
 
 I got three sets of Gene Set Name.
 
 ![](/Images/up_data.png?raw=true)
 
-However, when I put all my don genes into the website, I got zero set.
+However, when I put all my down list genes into the website, I got zero set.
 
 ![](/Images/down_data.png?raw=true)
 
