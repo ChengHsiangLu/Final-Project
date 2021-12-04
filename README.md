@@ -230,8 +230,8 @@ It can also be useful to examine the counts of reads for a single gene across th
 I select a few genes that is related to prostate cancer.
 
 ```
-plotCounts(dds, "ENSG00000004809.12", intgroup="condition") #padj<0.01
-plotCounts(dds, "ENSG00000205853.9", intgroup="condition") #RFPL3S
+plotCounts(dds, "ENSG00000004809.12", intgroup="condition") 
+plotCounts(dds, "ENSG00000205853.9", intgroup="condition") 
 ```
 ![](/Images/ENSG00000004809.12.png?raw=true)
 ![](/Images/ENSG00000205853.9.png?raw=true)
@@ -460,6 +460,8 @@ However, when I put all my down list genes into the website, I got zero set.
 ### Known issues
 
 I cannot use ```rld <- rlog(dds, blind=FALSE)``` because my samples are too large to use this code. It ran overnight and still got nothing. With samples less than 30 would be better to try this code.
+
+I try to put genes name into the ```plotCounts(dds, "ENSG00000004809.12", intgroup="condition") ``` code, however,it did not work.
 
 I should reduce my data into smaller dataset, so all my plot could look better and relatively easy to analysize.
 
