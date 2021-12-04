@@ -370,7 +370,7 @@ See how many genes are significantly different (up-regulated or down-regulated).
 
 Try to get no more than 500 genes.
 
-Look into the link Dr. Craig gave us to look into the biology part(put in the gene list I have).
+Look into the link Dr. Craig gave us to look into the biology part(put in gene lists I have).
 
 Heatmaps need to be fixed. (I fixed it with the sizeFactor and condition bar above the plot and on the right side.) 
 
