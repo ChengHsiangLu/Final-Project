@@ -471,9 +471,9 @@ Try to fix the problem of down file with zero set in the end.
 
 ## Conclusion
 
-I should reduce my data to a smller size that is easier to manager.
+I don't see a major difference between two groups. It is important that the group I choose should have a larger gap, like 30-40 years old to 60-70 years old or mild condition to sever condition.
 
-I don't see a major difference between two group. This is important that the group I choose should have a larger gap, like 30-40 years old to 60-70 years old or mild condition to sever condition.
+I should reduce my data to a smller size that is easier to manager.
 
 ## Files
 
