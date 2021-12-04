@@ -474,7 +474,7 @@ write.csv(as.data.frame(up), file = "~/Desktop/GDC/up.csv")
 down <- get_downregulated(res_df)
 write.csv(as.data.frame(down), file = "~/Desktop/GDC/down.csv")
 ```
-127 genes are listed in "up.csv" and 74 genes are listed in "down.csv".
+127 genes are listed in "up.csv" and 74 genes are listed in "down.csv", 201 genes in total.
 
 After getting up and down csv files, I save them as txt files. Then, I use the [GSEA](http://www.gsea-msigdb.org/gsea/msigdb/annotate.jsp) website and put all my up list genes into it.
 
@@ -499,8 +499,6 @@ Try to fix the problem of down file with zero set in the end.
 ## Conclusion
 
 By using [GSEA](http://www.gsea-msigdb.org/gsea/msigdb/annotate.jsp) to analyze, I found that 127 upregulated genes are enriched in three categories.
-
-However, there is no significant difference of the gene expression pattern between two groups. 
 
 It would be interesting to see whether there is any difference by using a larger gap of age, like 30-40 years old compare to 60-70 years old.
 
