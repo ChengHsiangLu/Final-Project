@@ -133,7 +133,7 @@ I modified my Milestone_1 with more details about how to download the data step 
 
 ### Input all samples
 
-After testing with more files, now I will start putting all my samples in my script. All samples are in the "HTseq\_counts\_files" folder. I create a "all" folder which keeps all my samples in "GDC" folder on my Desktop.
+After testing with more files, I started putting all my samples in my script. All samples are in the "HTseq\_counts\_files" folder. I created a "all" folder which keeps all my samples in "GDC" folder on my Desktop.
 
 ```
 #htseq-count input
