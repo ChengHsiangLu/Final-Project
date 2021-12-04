@@ -498,11 +498,7 @@ Try to fix the problem of down file with zero set in the end.
 
 ## Conclusion
 
-By using [GSEA](http://www.gsea-msigdb.org/gsea/msigdb/annotate.jsp) to analyze, I found that 127 upregulated genes are enriched in three categories.
-
-It would be interesting to see whether there is any difference by using a larger gap of age, like 30-40 years old compare to 60-70 years old.
-
-In the future, we should also include more samples or different datasets to confirm the results in this study.
+In this study, my aim is to study the gene expression pattern in TCGA of different age men with prostate cancer by using DeSEQ2. After Downloading Data from GDC, I got 331 cases in total. (203 cases in young group/ 128 cases in oldgroup.) . Using the DEseq2 allows me to interpret my dataset. Then, I set my p-value < 0.05 and log2foldchange >=1 or log2foldchange <=1. I got 127 unregulated genes and 74 down regulated genes, 201 genes in total. Then, I put my up regulated and down regulated gene list in [GSEA](http://www.gsea-msigdb.org/gsea/msigdb/annotate.jsp) respectively. In my upregulated gene list, I got 3 gene sets but only 4-6 genes overlaped. On the other side, after inputting the down regulated gene list, no overlaps found. In my opinion, I think that it would be interesting to see whether there is any difference by using a larger gap of age, like 30-40 years old compare to 60-70 years old. In the future, we should also include more samples or different datasets to confirm the results.
 
 ## Files
 
