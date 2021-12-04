@@ -343,7 +343,7 @@ Try to get no more than 500 genes.
 
 Look into the link Dr. Craig gave us to look into the biology part(put in the gene list I have).
 
-Heatmaps need to be fixed.
+Heatmaps need to be fixed. (I fixed it with the sizeFactor and condition bar above the plot and on the right side.) 
 
 ### Known issues
 
@@ -459,9 +459,9 @@ However, when I put all my down list genes into the website, I got zero set.
 
 ### Known issues
 
-I cannot use ```rld <- rlog(dds, blind=FALSE)``` because my samples are too large to use this code. It ran overnight and still got nothing.
+I cannot use ```rld <- rlog(dds, blind=FALSE)``` because my samples are too large to use this code. It ran overnight and still got nothing. With samples less than 30 would be better to try this code.
 
-I could reduce my data into smaller dataset, so all my plot could look better and relatively easy to analysize.
+I should reduce my data into smaller dataset, so all my plot could look better and relatively easy to analysize.
 
 After changing ensembl\_id into gene\_names for my "up" and "down" files, I still don't know how to change dds dataset's names.
 
@@ -471,7 +471,7 @@ Try to fix the problem of down file with zero set in the end.
 
 I should reduce my data to a smller size that is easier to manager.
 
-I don't see a major difference between two group. The group I choose should have a larger gap between them, like 30-40 years old to 60-70 years old.
+I don't see a major difference between two group. This is important that the group I choose should have a larger gap, like 30-40 years old to 60-70 years old or mild condition to sever condition.
 
 
 ## Deliverable
