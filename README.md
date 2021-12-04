@@ -376,7 +376,7 @@ Heatmaps need to be fixed. (I fixed it with the sizeFactor and condition bar abo
 
 ### Known issues
 
-I will change my p-value to 0.05 and 2foldchange to 1 and see what will happen with my plots.
+I will change my p-value to 0.05 and log2foldchange to 1 and see what will happen with my plots.
 
 I will try to change all my ensemble id to hugo id.
 
