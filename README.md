@@ -9,13 +9,27 @@ Cheng-Hsiang Lu
 
 ## Overview of project
 
-I will study differentially expressed genes between two groups. One group of people is younger than 65 years old, while the other group is older than 65 years old. This analysis will utilize the package DESeq2 and follow the specific vignette: 
+I studied differentially expressed genes between two groups. One group of people is younger than 65 years old, while the other group is older than 65 years old. This analysis utilized the package DESeq2 and follow the specific vignette: 
 [link](http://bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html)
 
-For this analysis, I will use the TCGA cohort and have identidfied 331 RNA-seq counts files for tumors that fit within my cohort.Saperated by the age of 65 years old, 128 samples are from the group beyond 65 years old and 203 samples are from the group under 65 years old. Within the analysis, I will control for race and primary gleason grade.
+For this analysis, I used the TCGA cohort and identidfied 331 RNA-seq counts files for tumors that fit within my cohort. Saperated by the age of 65 years old, 128 samples are from the group beyond 65 years old and 203 samples are from the group under 65 years old. Within the analysis, I controled for race and primary gleason grade.
 
 ## Data
-I will use the data from [GDC](https://portal.gdc.cancer.gov/) Examining clinical data, there are total 331 cases from 55 to 75 years old, and each group has 128 (65-75 year-olds) and 203 samples (55-64 year-olds).
+I used the data from [GDC](https://portal.gdc.cancer.gov/) Examining clinical data, there are total 331 cases from 55 to 75 years old, and each group has 128 (65-75 year-olds) and 203 samples (55-64 year-olds).
+
+## Files manage
+
+I put all csv files in the folder of "Excel".
+
+I put all htseq.counts files in the folder of "HTseq_counts_files".
+
+I put all png images in the folder of "Images".
+
+I put all PDF files in the folder of "PDF".
+
+I put all scripts in the folder of "Scripts".
+
+Other form of files are in the folder of " Other_files".
 
 ## Milestone_1
 
@@ -102,11 +116,11 @@ I will run throught the SOP I presented above and try to ruduce errors within my
 
 ###  Data
 
-I have uploaded " Sample\_young.csv" and "result.txt" in the "Other\_files" folder. All my "htseq.counts" files are in the "HTseq\_counts\_files" folder.
+I uploaded " Sample\_young.csv" and "result.txt". All my "htseq.counts" files are in the "HTseq\_counts\_files" folder.
 
 ###  Known Issues
 
-I have met issue with the content in DESeq2 guildlines. However, after discussing with Dr. Craig, problems solved but still need to retest my whole testing scripts.
+I met issue with the content in DESeq2 guildlines. However, after discussing with Dr. Craig, problems solved but still need to retest my whole testing scripts.
 
 It is hard to put all files into the scripts that I run, but I will put more data and samples into my scripts eventually.
 
@@ -115,7 +129,7 @@ It is hard to put all files into the scripts that I run, but I will put more dat
 
 ### Modified my Milestone_1(optional)
 
-I have modified my Milestone_1 with more details about how to download the data step by step. Then, I reloaded the data and put more screenshots to follow through.
+I modified my Milestone_1 with more details about how to download the data step by step. Then, I reloaded the data and put more screenshots to follow through.
 
 ### Input all samples
 
