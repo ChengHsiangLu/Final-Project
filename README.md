@@ -473,6 +473,19 @@ I should reduce my data to a smller size that is easier to manager.
 
 I don't see a major difference between two group. This is important that the group I choose should have a larger gap, like 30-40 years old to 60-70 years old or mild condition to sever condition.
 
+## Files
+
+I put all csv files in the folder of "Excel".
+
+I put all htseq.counts files in the folder of "HTseq_counts_files".
+
+I put all png images in the folder of "Images".
+
+I put all PDF files in the folder of "PDF".
+
+I put all scripts in the folder of "Scripts".
+
+Other form of files are in the folder of " Other_files".
 
 ## Deliverable
 
