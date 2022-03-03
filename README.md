@@ -86,7 +86,7 @@ After selecting all files to Cart in GDC, I have downloaded TCGA data by clickin
 
 ![](/Images/Manifest.png?raw=true)
 
-You have to download "gdc-client" form [GDC Data Transfer Tool](https://gdc.cancer.gov/access-data/gdc-data-transfer-tool) by choosing **gdc-client_v1.6.1_OSX_x64.zip** and put it in your work directory and copy your work directory path into the ".zshrc" file like this:
+You have to download "gdc-client" from [GDC Data Transfer Tool](https://gdc.cancer.gov/access-data/gdc-data-transfer-tool) by choosing **gdc-client_v1.6.1_OSX_x64.zip** and put it in your work directory and copy your work directory path into the ".zshrc" file like this:
 
 ```vi ~/.zshrc```
 
